@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATAKORN | Academic & Research</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Background Video -->
+    <div class="video-container">
+        <video autoplay loop muted playsinline id="bg-video">
+            <source src="bg-space.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-dark"></div>
+    </div>
+
+    <!-- 2. Header & Navigation -->
+    <header class="navbar">
+        <div class="brand">NATAKORN</div>
+        <div class="menu-btn" onclick="toggleMenu()">≡ Menu</div>
+    </header>
+
+    <!-- 3. Slide-in Overlay Menu -->
+    <div id="side-menu" class="side-menu">
+        <div class="close-btn" onclick="toggleMenu()">✕</div>
+        <nav class="menu-links">
+            <a href="#about">BIOGRAPHY</a>
+            <a href="#research">RESEARCH</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('side-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
