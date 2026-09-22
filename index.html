@@ -4,24 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NATAKORN | Academic Portfolio</title>
-    <!-- นำเข้าฟอนต์ Google Fonts เพื่อความสวยงาม -->
+    <!-- นำเข้าฟอนต์สไตล์เรียบหรู -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- วิดีโอฉากหลัง -->
+    <!-- วิดีโอฉากหลังอวกาศ -->
     <video autoplay muted loop id="bg-video">
         <source src="bg-space.mp4" type="video/mp4">
     </video>
 
-    <!-- แถบเมนูไล่เฉดสีด้านบน -->
-    <header>
+    <!-- แถบเมนูด้านบน -->
+    <header class="navbar">
         <div class="logo">NATAKORN</div>
-        <button class="menu-toggle">≡ Menu</button>
+        <button class="menu-btn" id="menuToggle">≡ Menu</button>
     </header>
 
+    <!-- หน้าเมนูไล่เฉดสไลด์เต็มหน้าจอ (Gradient Overlay) -->
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="close-btn" id="menuClose">✕ Close</button>
+        
+        <div class="menu-content">
+            <div class="menu-brand">NATAKORN</div>
+            <nav class="menu-links">
+                <a href="#biography">BIOGRAPHY</a>
+                <a href="#research">RESEARCH</a>
+                <a href="#academic">ACADEMIC</a>
+                <a href="#project">PROJECT</a>
+                <a href="#competition">COMPETITION</a>
+                <a href="#award">AWARD</a>
+                <a href="#future">FUTURE</a>
+                <a href="#gallery">GALLERY</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- โค้ดสำหรับสั่ง เปิด/ปิด เมนู -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        // กดปุ่ม Menu แล้วเด้งแผ่นเมนูออกมา
+        menuToggle.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+        });
+
+        // กดปุ่ม Close เพื่อปิดเมนู
+        menuClose.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+        });
+
+        // กดเลือกหัวข้อเมนูแล้วปิดหน้าเมนูอัตโนมัติ
+        document.querySelectorAll('.menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
