@@ -17,16 +17,15 @@
         <source src="bg-space.mp4" type="video/mp4">
     </video>
 
-    <!-- แถบเมนูด้านบน -->
+    <!-- แถบด้านบน (Header) -->
     <header class="navbar">
         <div class="logo">NATAKORN</div>
+        <!-- ปุ่มสลับสถานะ Menu / Close ปุ่มเดียวจบ -->
         <button class="menu-btn" id="menuToggle">≡ Menu</button>
     </header>
 
-    <!-- หน้าเมนูไล่เฉดสไลด์เต็มหน้าจอ (Gradient Overlay) -->
+    <!-- หน้าเมนูไล่เฉด Gradient Overlay -->
     <div class="menu-overlay" id="menuOverlay">
-        <button class="close-btn" id="menuClose">✕ Close</button>
-        
         <div class="menu-content">
             <div class="menu-brand">NATAKORN</div>
             <nav class="menu-links">
@@ -42,26 +41,22 @@
         </div>
     </div>
 
-    <!-- โค้ดสำหรับสั่ง เปิด/ปิด เมนู -->
+    <!-- โค้ดสลับปุ่มแบบ Princeton -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
         const menuOverlay = document.getElementById('menuOverlay');
 
-        // กดปุ่ม Menu แล้วเด้งแผ่นเมนูออกมา
+        // สลับเปิด-ปิดเมนู พร้อมเปลี่ยนข้อความปุ่ม
         menuToggle.addEventListener('click', () => {
-            menuOverlay.classList.add('active');
+            const isOpen = menuOverlay.classList.toggle('active');
+            menuToggle.innerText = isOpen ? '✕ Close' : '≡ Menu';
         });
 
-        // กดปุ่ม Close เพื่อปิดเมนู
-        menuClose.addEventListener('click', () => {
-            menuOverlay.classList.remove('active');
-        });
-
-        // กดเลือกหัวข้อเมนูแล้วปิดหน้าเมนูอัตโนมัติ
+        // เมื่อกดคลิกที่หัวข้อเมนู ให้ปิดเมนูและคืนค่าปุ่มกลับเป็น ≡ Menu
         document.querySelectorAll('.menu-links a').forEach(link => {
             link.addEventListener('click', () => {
                 menuOverlay.classList.remove('active');
+                menuToggle.innerText = '≡ Menu';
             });
         });
     </script>
