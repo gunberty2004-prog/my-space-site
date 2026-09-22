@@ -5,13 +5,12 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
-    overflow-x: hidden;
-    background-color: #000;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden; /* ป้องกันแถบเลื่อนด้านข้าง */
 }
 
-/* วิดีโอฉากหลังเต็มจอ */
+/* ส่วนของวิดีโอฉากหลังอวกาศ - ยังคงเดิม */
 #bg-video {
     position: fixed;
     top: 0;
@@ -22,8 +21,9 @@ body {
     z-index: -1;
 }
 
-/* Navbar ด้านบน */
-.navbar {
+/* --- นี่คือส่วนที่แก้ใหม่ --- */
+/* ส่วนของ Navbar ด้านบนสุด - ตอนนี้จะไล่เฉดสี */
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,114 +33,28 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    
+    /* การไล่เฉดสีจากดำใส (90%) ไปจนถึงใสเลย (0%) */
+    background: linear-gradient(
+        to right, 
+        rgba(0, 0, 0, 0.9) 0%,   /* ดำทึบ 90% ด้านซ้าย */
+        rgba(0, 0, 0, 0.8) 20%,  /* จางลง */
+        rgba(0, 0, 0, 0) 100%   /* ใสสนิท ด้านขวา */
+    );
 }
 
 .logo {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-.menu-btn {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: opacity 0.3s ease;
-}
-
-.menu-btn:hover {
-    opacity: 0.7;
-}
-
-/* หน้า Overlay เมนูแบบไล่เฉด Gradient */
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    /* ไล่เฉดจากสีดำทึบด้านซ้าย ไปเป็นสีใสทางขวา */
-    background: linear-gradient(
-        to right, 
-        rgba(0, 0, 0, 0.98) 0%, 
-        rgba(0, 0, 0, 0.85) 30%, 
-        rgba(0, 0, 0, 0.4) 65%, 
-        rgba(0, 0, 0, 0) 100%
-    );
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 4rem;
-}
-
-/* เมื่อสั่งเปิดเมนู */
-.menu-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* ปุ่มปิด (Close) */
-.close-btn {
-    position: absolute;
-    top: 2rem;
-    right: 3rem;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.close-btn:hover {
-    opacity: 1;
-}
-
-/* เนื้อหาในเมนู */
-.menu-content {
-    margin-top: 1rem;
-    max-width: 500px;
-}
-
-.menu-brand {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 2.5rem;
-}
-
-/* รายการเมนูเรียงลงมาตามรูป */
-.menu-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-}
-
-.menu-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 2px;
-    transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-    width: fit-content;
 }
 
-.menu-links a:hover {
-    transform: translateX(12px);
-    color: #e0e0e0;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 1px;
 }
