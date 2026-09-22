@@ -2,102 +2,145 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-    overflow: hidden;
-    color: white;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    background-color: #000;
 }
 
-/* Background Video Styling */
-.video-container {
+/* วิดีโอฉากหลังเต็มจอ */
+#bg-video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
     z-index: -1;
 }
 
-#bg-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.overlay-dark {
-    position: absolute;
+/* Navbar ด้านบน */
+.navbar {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-/* Navbar */
-.navbar {
+    padding: 2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2.5rem 4rem;
+    z-index: 10;
 }
 
-.brand {
-    font-size: 1.5rem;
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .menu-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
     font-size: 1.2rem;
+    font-weight: 600;
     cursor: pointer;
     letter-spacing: 1px;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
 
 .menu-btn:hover {
     opacity: 0.7;
 }
 
-/* Overlay Menu Slide-in */
-.side-menu {
+/* หน้า Overlay เมนูแบบไล่เฉด Gradient */
+.menu-overlay {
     position: fixed;
     top: 0;
-    left: -400px;
-    width: 380px;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(15, 15, 25, 0.88));
-    backdrop-filter: blur(12px);
+    /* ไล่เฉดจากสีดำทึบด้านซ้าย ไปเป็นสีใสทางขวา */
+    background: linear-gradient(
+        to right, 
+        rgba(0, 0, 0, 0.98) 0%, 
+        rgba(0, 0, 0, 0.85) 30%, 
+        rgba(0, 0, 0, 0.4) 65%, 
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
     display: flex;
     flex-direction: column;
-    padding: 4rem 3rem;
-    transition: left 0.4s ease-in-out;
-    z-index: 10;
+    padding: 3rem 4rem;
 }
 
-.side-menu.active {
-    left: 0;
+/* เมื่อสั่งเปิดเมนู */
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
+/* ปุ่มปิด (Close) */
 .close-btn {
-    font-size: 1.8rem;
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
     cursor: pointer;
-    align-self: flex-end;
-    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* เนื้อหาในเมนู */
+.menu-content {
+    margin-top: 1rem;
+    max-width: 500px;
+}
+
+.menu-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+}
+
+/* รายการเมนูเรียงลงมาตามรูป */
+.menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
 .menu-links a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 1.3rem;
-    display: block;
-    margin-bottom: 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
     letter-spacing: 2px;
-    transition: transform 0.2s, color 0.2s;
+    transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+    width: fit-content;
 }
 
 .menu-links a:hover {
-    color: #64ffda;
-    transform: translateX(10px);
+    transform: translateX(12px);
+    color: #e0e0e0;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }

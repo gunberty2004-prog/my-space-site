@@ -3,40 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NATAKORN | Academic & Research</title>
+    <title>NATAKORN | Academic Portfolio</title>
+    <!-- นำเข้าฟอนต์สไตล์หรูหราแบบในรูป -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. Background Video -->
-    <div class="video-container">
-        <video autoplay loop muted playsinline id="bg-video">
-            <source src="bg-space.mp4" type="video/mp4">
-        </video>
-        <div class="overlay-dark"></div>
-    </div>
+    <!-- วิดีโอฉากหลัง -->
+    <video autoplay muted loop id="bg-video">
+        <source src="bg-space.mp4" type="video/mp4">
+    </video>
 
-    <!-- 2. Header & Navigation -->
+    <!-- แถบด้านบน (Header) -->
     <header class="navbar">
-        <div class="brand">NATAKORN</div>
-        <div class="menu-btn" onclick="toggleMenu()">≡ Menu</div>
+        <div class="logo">NATAKORN</div>
+        <button class="menu-btn" id="menuToggle">≡ Menu</button>
     </header>
 
-    <!-- 3. Slide-in Overlay Menu -->
-    <div id="side-menu" class="side-menu">
-        <div class="close-btn" onclick="toggleMenu()">✕</div>
-        <nav class="menu-links">
-            <a href="#about">BIOGRAPHY</a>
-            <a href="#research">RESEARCH</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#contact">CONTACT</a>
-        </nav>
+    <!-- หน้าเมนูไล่เฉด GradientOverlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="close-btn" id="menuClose">✕ Close</button>
+        
+        <div class="menu-content">
+            <div class="menu-brand">NATAKORN</div>
+            <nav class="menu-links">
+                <a href="#biography">BIOGRAPHY</a>
+                <a href="#research">RESEARCH</a>
+                <a href="#academic">ACADEMIC</a>
+                <a href="#project">PROJECT</a>
+                <a href="#competition">COMPETITION</a>
+                <a href="#award">AWARD</a>
+                <a href="#future">FUTURE</a>
+                <a href="#gallery">GALLERY</a>
+            </nav>
+        </div>
     </div>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('side-menu').classList.toggle('active');
-        }
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        // เปิดเมนู
+        menuToggle.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+        });
+
+        // ปิดเมนู
+        menuClose.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+        });
+
+        // กดปุ่มลิงก์แล้วปิดเมนูอัตโนมัติ
+        document.querySelectorAll('.menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
