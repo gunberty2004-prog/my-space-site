@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NATAKORN | Academic Portfolio</title>
-    <!-- นำเข้าฟอนต์สไตล์เรียบหรู -->
+    <!-- นำเข้าฟอนต์สไตล์หรูหรา -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,600;0,800;1,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,9 +20,19 @@
     <!-- แถบด้านบน (Header) -->
     <header class="navbar">
         <div class="logo">NATAKORN</div>
-        <!-- ปุ่มสลับสถานะ Menu / Close ปุ่มเดียวจบ -->
         <button class="menu-btn" id="menuToggle">≡ Menu</button>
     </header>
+
+    <!-- ข้อความกลางหน้าจอ แยก 2 บรรทัด -->
+    <main class="hero-container">
+        <div class="hero-content">
+            <p class="hero-subtitle">WELCOME TO MY PORTFOLIO</p>
+            <h1 class="hero-title">
+                "To fly high,<br>
+                one must not fear the wind."
+            </h1>
+        </div>
+    </main>
 
     <!-- หน้าเมนูไล่เฉด Gradient Overlay -->
     <div class="menu-overlay" id="menuOverlay">
@@ -41,18 +51,16 @@
         </div>
     </div>
 
-    <!-- โค้ดสลับปุ่มแบบ Princeton -->
+    <!-- โค้ดสลับปุ่มสไตล์ Princeton -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const menuOverlay = document.getElementById('menuOverlay');
 
-        // สลับเปิด-ปิดเมนู พร้อมเปลี่ยนข้อความปุ่ม
         menuToggle.addEventListener('click', () => {
             const isOpen = menuOverlay.classList.toggle('active');
             menuToggle.innerText = isOpen ? '✕ Close' : '≡ Menu';
         });
 
-        // เมื่อกดคลิกที่หัวข้อเมนู ให้ปิดเมนูและคืนค่าปุ่มกลับเป็น ≡ Menu
         document.querySelectorAll('.menu-links a').forEach(link => {
             link.addEventListener('click', () => {
                 menuOverlay.classList.remove('active');

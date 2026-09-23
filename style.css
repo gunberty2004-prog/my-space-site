@@ -22,7 +22,7 @@ body {
     z-index: -1;
 }
 
-/* Navbar ล็อกไว้ด้านบนสุดเสมอ */
+/* Navbar ล็อกไว้ด้านบนสุด */
 .navbar {
     position: fixed;
     top: 0;
@@ -32,7 +32,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 200; /* อยู่ชั้นสูงสุดเพื่อให้ปุ่มกดสลับได้ตลอด */
+    z-index: 200;
 }
 
 .logo {
@@ -57,6 +57,38 @@ body {
     opacity: 0.7;
 }
 
+/* ข้อความเด่นกลางหน้าจอ Hero Section */
+.hero-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: #d1d1d1;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.35;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
+}
+
 /* หน้าเมนูไล่เฉด Gradient Overlay */
 .menu-overlay {
     position: fixed;
@@ -75,25 +107,20 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
-    
-    /* ตั้งค่าให้ตัวเนื้อหาข้างในไถเลื่อน (Scroll) ได้ถ้ายาวเกินหน้าจอ */
     overflow-y: auto;
-    padding: 8rem 4rem 4rem 4rem; /* เว้นพื้นที่ด้านบนหลบ Navbar */
+    padding: 8rem 4rem 4rem 4rem;
 }
 
-/* ซ่อนแถบ Scrollbar ให้ดูสะอาดตา */
 .menu-overlay::-webkit-scrollbar {
     width: 0px;
     background: transparent;
 }
 
-/* เมื่อสั่งเปิดเมนู */
 .menu-overlay.active {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* จัดวางเนื้อหาเมนู */
 .menu-content {
     max-width: 500px;
 }
@@ -126,4 +153,24 @@ body {
 .menu-links a:hover {
     transform: translateX(15px);
     color: #cccccc;
+}
+
+/* รองรับจอมือถือ (Responsive Design) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1.2rem 1.5rem;
+    }
+    .hero-container {
+        padding: 0 1.8rem;
+    }
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.4;
+    }
+    .menu-overlay {
+        padding: 6rem 2rem 2rem 2rem;
+    }
+    .menu-links a {
+        font-size: 1.5rem;
+    }
 }
